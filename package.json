@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "Wonderful Elements - Blendara Apothecary Grimoire",
   "scripts": {
+    "build": "node seed.js",
     "dev": "node server.js",
     "start": "node server.js",
     "seed": "node seed.js"
@@ -12,5 +13,8 @@
     "bcryptjs": "^2.4.3",
     "express-session": "^1.17.3",
     "ejs": "^3.1.9"
+  },
+  "engines": {
+    "node": ">=18.0.0"
   }
 }

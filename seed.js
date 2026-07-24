@@ -37,5 +37,13 @@ const elements = [
 
 elements.forEach(el => { el.created_at = new Date().toISOString(); el.updated_at = el.created_at; el.image_url = null; });
 
-fs.writeFileSync(ELEMENTS_FILE, JSON.stringify(elements, null, 2));
-console.log(`✦ Seeded ${elements.length} elements into the grimoire.`);
+// Only seed if file is empty or doesn't exist
+let existing = [];
+try { existing = JSON.parse(fs.readFileSync(ELEMENTS_FILE, 'utf8')); } catch(e) {}
+
+if (existing.length === 0) {
+  fs.writeFileSync(ELEMENTS_FILE, JSON.stringify(elements, null, 2));
+  console.log(`✦ Seeded ${elements.length} elements into the grimoire.`);
+} else {
+  console.log(`✦ Grimoire already has ${existing.length} elements. Skipping seed.`);
+}

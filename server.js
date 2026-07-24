@@ -20,6 +20,13 @@ if (!fs.existsSync(USERS_FILE)) {
   console.log('Default admin created (user: admin, pass: blendara2024)');
 }
 
+// Auto-seed if elements file is empty
+const currentElements = JSON.parse(fs.readFileSync(ELEMENTS_FILE, 'utf8'));
+if (currentElements.length === 0) {
+  console.log('No elements found, running seed...');
+  require('./seed');
+}
+
 function readElements() { return JSON.parse(fs.readFileSync(ELEMENTS_FILE, 'utf8')); }
 function writeElements(data) { fs.writeFileSync(ELEMENTS_FILE, JSON.stringify(data, null, 2)); }
 function readUsers() { return JSON.parse(fs.readFileSync(USERS_FILE, 'utf8')); }
