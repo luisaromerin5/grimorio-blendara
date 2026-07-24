@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= element ? 'Editar' : 'Nuevo' %> Elemento — Blendara Admin</title>
+    <link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/admin.css">
+</head>
+<body class="admin-body">
+    <div class="admin-container">
+        <header class="admin-header">
+            <h1><%= element ? '✏️ Editar' : '✦ Nuevo' %> Elemento</h1>
+            <div class="admin-nav">
+                <a href="/admin">← Volver al Dashboard</a>
+            </div>
+        </header>
+
+        <form method="POST" action="/admin/save" class="element-form">
+            <% if (element) { %>
+                <input type="hidden" name="id" value="<%= element.id %>">
+            <% } %>
+
+            <div class="form-row">
+                <div class="form-group">
+                    <label>Nombre (Español) *</label>
+                    <input type="text" name="name_es" value="<%= element ? element.name_es : '' %>" required placeholder="Ej: Manzanilla">
+                </div>
+                <div class="form-group">
+                    <label>Nombre (English) *</label>
+                    <input type="text" name="name_en" value="<%= element ? element.name_en : '' %>" required placeholder="Ej: Chamomile">
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group">
+                    <label>Nombre Científico</label>
+                    <input type="text" name="scientific_name" value="<%= element ? element.scientific_name || '' : '' %>" placeholder="Ej: Matricaria chamomilla">
+                </div>
+                <div class="form-group">
+                    <label>Categoría</label>
+                    <select name="category">
+                        <option value="flower" <%= element && element.category === 'flower' ? 'selected' : '' %>>🌸 Flor</option>
+                        <option value="herb" <%= element && element.category === 'herb' ? 'selected' : '' %>>🌿 Hierba</option>
+                        <option value="spice" <%= element && element.category === 'spice' ? 'selected' : '' %>>🫚 Especia/Planta</option>
+                        <option value="mineral" <%= element && element.category === 'mineral' ? 'selected' : '' %>>💎 Mineral/Piedra</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group">
+                    <label>Elemento</label>
+                    <select name="element">
+                        <option value="">— Seleccionar —</option>
+                        <option value="Fuego" <%= element && element.element === 'Fuego' ? 'selected' : '' %>>🔥 Fuego</option>
+                        <option value="Agua" <%= element && element.element === 'Agua' ? 'selected' : '' %>>💧 Agua</option>
+                        <option value="Aire" <%= element && element.element === 'Aire' ? 'selected' : '' %>>💨 Aire</option>
+                        <option value="Tierra" <%= element && element.element === 'Tierra' ? 'selected' : '' %>>🌍 Tierra</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Planeta</label>
+                    <input type="text" name="planet" value="<%= element ? element.planet || '' : '' %>" placeholder="Ej: Sol, Luna, Venus">
+                </div>
+                <div class="form-group">
+                    <label>Chakra</label>
+                    <input type="text" name="chakra" value="<%= element ? element.chakra || '' : '' %>" placeholder="Ej: Plexo Solar">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label>URL de Imagen</label>
+                <input type="text" name="image_url" value="<%= element ? element.image_url || '' : '' %>" placeholder="https://...">
+            </div>
+
+            <div class="form-group">
+                <label>Beneficios para el Cuerpo</label>
+                <textarea name="body_benefits" rows="5" placeholder="Describe los beneficios medicinales y físicos..."><%= element ? element.body_benefits || '' : '' %></textarea>
+            </div>
+
+            <div class="form-group">
+                <label>Beneficios Espirituales</label>
+                <textarea name="spiritual_benefits" rows="5" placeholder="Describe los beneficios energéticos y espirituales..."><%= element ? element.spiritual_benefits || '' : '' %></textarea>
+            </div>
+
+            <div class="form-group">
+                <label>Formas de Uso</label>
+                <textarea name="uses" rows="5" placeholder="Té, baño de limpia, steam, sahumerio..."><%= element ? element.uses || '' : '' %></textarea>
+            </div>
+
+            <div class="form-group">
+                <label>Precauciones ⚠️</label>
+                <textarea name="precautions" rows="3" placeholder="Contraindicaciones y advertencias..."><%= element ? element.precautions || '' : '' %></textarea>
+            </div>
+
+            <div class="form-actions">
+                <button type="submit" class="btn-save">💾 Guardar Elemento</button>
+                <a href="/admin" class="btn-cancel">Cancelar</a>
+            </div>
+        </form>
+    </div>
+</body>
+</html>

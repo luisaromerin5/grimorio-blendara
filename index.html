@@ -1,0 +1,744 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>✦ Wonderful Elements — Blendara Apothecary</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700&family=Lora:ital,wght@0,400;0,600;1,400&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&display=swap');
+
+        :root {
+            --bg: #f5f0e8;
+            --text: #3d3225;
+            --accent: #6b5b3e;
+            --gold: #b8960c;
+            --green: #4a6741;
+            --rose: #8b4557;
+            --fire: #a84632;
+            --water: #3a6b7c;
+            --air: #7b7fa3;
+            --earth: #6b5d4a;
+            --card-bg: #faf7f2;
+            --border: #d4c5a9;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Lora', serif;
+            background-color: var(--bg);
+            color: var(--text);
+            line-height: 1.8;
+        }
+
+        /* HEADER */
+        header {
+            text-align: center;
+            padding: 80px 20px 60px;
+            background: linear-gradient(180deg, #f0e8d8 0%, var(--bg) 100%);
+            border-bottom: 2px solid var(--border);
+        }
+
+        header h1 {
+            font-family: 'Cinzel Decorative', serif;
+            font-size: 3rem;
+            color: var(--accent);
+            letter-spacing: 3px;
+            margin-bottom: 10px;
+        }
+
+        header .subtitle {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.4rem;
+            color: var(--gold);
+            font-style: italic;
+        }
+
+        header .intro {
+            max-width: 700px;
+            margin: 30px auto 0;
+            font-style: italic;
+            color: #6b5d4a;
+            font-size: 1.05rem;
+        }
+
+        /* NAV */
+        nav {
+            background: var(--card-bg);
+            border-bottom: 1px solid var(--border);
+            padding: 20px;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            text-align: center;
+        }
+
+        nav a {
+            color: var(--accent);
+            text-decoration: none;
+            margin: 5px 12px;
+            font-size: 0.9rem;
+            display: inline-block;
+            transition: color 0.3s;
+        }
+
+        nav a:hover { color: var(--gold); }
+
+        /* MAIN */
+        main {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        /* CARDS */
+        .element-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 40px;
+            margin-bottom: 50px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+            transition: transform 0.2s;
+        }
+
+        .element-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 25px rgba(0,0,0,0.08);
+        }
+
+        .element-card h2 {
+            font-family: 'Cinzel Decorative', serif;
+            font-size: 1.8rem;
+            color: var(--accent);
+            margin-bottom: 8px;
+            border-bottom: 2px solid var(--border);
+            padding-bottom: 12px;
+        }
+
+        .element-meta {
+            font-size: 0.9rem;
+            color: #888;
+            margin-bottom: 20px;
+            font-style: italic;
+        }
+
+        .element-meta .elemento { font-weight: 600; }
+        .element-meta .fire { color: var(--fire); }
+        .element-meta .water { color: var(--water); }
+        .element-meta .air { color: var(--air); }
+        .element-meta .earth { color: var(--earth); }
+
+        .element-card h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.3rem;
+            color: var(--green);
+            margin: 25px 0 10px;
+            padding-left: 15px;
+            border-left: 3px solid var(--gold);
+        }
+
+        .element-card h3.spiritual {
+            color: var(--rose);
+        }
+
+        .element-card p {
+            margin-bottom: 12px;
+            text-align: justify;
+        }
+
+        .element-card ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .element-card ul li {
+            padding: 8px 0 8px 25px;
+            position: relative;
+        }
+
+        .element-card ul li::before {
+            content: "✦";
+            position: absolute;
+            left: 0;
+            color: var(--gold);
+        }
+
+        .precaution {
+            background: #fff3e0;
+            border-left: 4px solid #e65100;
+            padding: 15px 20px;
+            margin-top: 20px;
+            border-radius: 0 8px 8px 0;
+            font-size: 0.95rem;
+        }
+
+        .precaution strong { color: #e65100; }
+
+        .precaution.danger {
+            background: #fce4ec;
+            border-left-color: #c62828;
+        }
+
+        .precaution.danger strong { color: #c62828; }
+
+        /* SECTION HEADERS */
+        .section-divider {
+            text-align: center;
+            padding: 50px 20px 30px;
+            font-family: 'Cinzel Decorative', serif;
+            font-size: 1.5rem;
+            color: var(--gold);
+        }
+
+        .section-divider::before,
+        .section-divider::after {
+            content: " ─── ✦ ─── ";
+            color: var(--border);
+        }
+
+        /* FOOTER */
+        footer {
+            text-align: center;
+            padding: 60px 20px;
+            border-top: 2px solid var(--border);
+            font-style: italic;
+            color: #888;
+        }
+
+        footer blockquote {
+            max-width: 600px;
+            margin: 0 auto 20px;
+            font-size: 1.1rem;
+            color: var(--accent);
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 600px) {
+            header h1 { font-size: 2rem; }
+            .element-card { padding: 25px; }
+            .element-card h2 { font-size: 1.4rem; }
+            nav a { margin: 3px 6px; font-size: 0.8rem; }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>✦ Wonderful Elements ✦</h1>
+    <p class="subtitle">Blendara Apothecary — Grimorio Herbolario</p>
+    <p class="intro">Nature has always kept its secrets within every flower, leaf, root, and mineral. Some have been revealed by science; others live on through stories and rituals passed from one generation to the next.</p>
+</header>
+
+<nav>
+    <a href="#manzanilla">Manzanilla</a>
+    <a href="#calendula">Caléndula</a>
+    <a href="#menta">Menta</a>
+    <a href="#mullein">Mullein</a>
+    <a href="#salvia">Salvia</a>
+    <a href="#romero">Romero</a>
+    <a href="#jamaica">Jamaica</a>
+    <a href="#ruda">Ruda</a>
+    <a href="#artemisa">Artemisa</a>
+    <a href="#lavanda">Lavanda</a>
+    <a href="#rosas">Rosas</a>
+    <a href="#arnica">Árnica</a>
+    <a href="#lemonbalm">Lemon Balm</a>
+    <a href="#eucalipto">Eucalipto</a>
+    <a href="#jasmin">Jazmín</a>
+    <a href="#canela">Canela</a>
+    <a href="#clavos">Clavos</a>
+    <a href="#sauco">Saúco</a>
+    <a href="#limon">Limón</a>
+    <a href="#avena">Avena</a>
+    <a href="#arroz">Arroz</a>
+    <a href="#sal">Sal</a>
+    <a href="#magnesio">Magnesio</a>
+    <a href="#mentacristales">Cristales de Menta</a>
+    <a href="#frankincense">Frankincense</a>
+    <a href="#tigereye">Ojo de Tigre</a>
+</nav>
+
+<main>
+
+<div class="section-divider">Flores y Hierbas</div>
+
+<!-- MANZANILLA -->
+<div class="element-card" id="manzanilla">
+    <h2>✦ Manzanilla / Chamomile</h2>
+    <p class="element-meta"><em>Matricaria chamomilla</em> — <span class="elemento water">Elemento: Agua</span> | Planeta: Sol & Luna</p>
+    <h3>Beneficios para el Cuerpo</h3>
+    <p>La manzanilla es una de las hierbas más versátiles y seguras que existen. Su poder antiinflamatorio y antiespasmódico la hacen ideal para problemas digestivos como cólicos, gastritis, e indigestión. Es un sedante suave que alivia el insomnio y la ansiedad sin crear dependencia. Aplicada externamente, calma irritaciones de piel, eczema, y quemaduras leves. También es maravillosa para los ojos cansados o inflamados (compresas frías).</p>
+    <h3 class="spiritual">Beneficios Espirituales</h3>
+    <p>La manzanilla es la hierba de la PAZ y la PROSPERIDAD. Atrae abundancia económica — se dice que lavarse las manos con té de manzanilla antes de jugar juegos de azar trae suerte. Calma la energía agitada del hogar, deshace discusiones. Promueve sueños pacíficos y ayuda a soltar el estrés emocional acumulado.</p>
+    <h3>Formas de Uso</h3>
+    <ul>
+        <li><strong>Té:</strong> 1 cucharada de flores secas en agua caliente, 5-10 min. Para digestión, calma y sueño.</li>
+        <li><strong>Baño de limpia:</strong> Un puño generoso de flores en agua tibia. Para atraer paz y abundancia.</li>
+        <li><strong>Steam facial:</strong> Flores en agua hirviente, vapor sobre el rostro 10 min. Para piel sensible.</li>
+        <li><strong>Compresa:</strong> Bolsitas de té frías sobre ojos hinchados.</li>
+    </ul>
+    <div class="precaution"><strong>⚠️ Precauciones:</strong> Puede causar reacción alérgica en personas sensibles a la familia Asteraceae (girasoles, margaritas, ambrosía).</div>
+</div>
+
+<!-- CALENDULA -->
+<div class="element-card" id="calendula">
+    <h2>✦ Caléndula / Calendula</h2>
+    <p class="element-meta"><em>Calendula officinalis</em> — <span class="elemento fire">Elemento: Fuego</span> | Planeta: Sol</p>
+    <h3>Beneficios para el Cuerpo</h3>
+    <p>La caléndula es la GRAN SANADORA de la piel. Sus propiedades cicatrizantes, antifúngicas y antiinflamatorias la convierten en medicina de primera para heridas, quemaduras leves, dermatitis, rozaduras de bebé, y piel agrietada. Internamente, apoya la salud femenina regulando el ciclo menstrual y aliviando cólicos.</p>
+    <h3 class="spiritual">Beneficios Espirituales</h3>
+    <p>Flor solar por excelencia, la caléndula trae PROTECCIÓN y VISIÓN. Colocada bajo la cama, induce sueños proféticos que revelan verdades ocultas. En el umbral del hogar o la ventana, actúa como guardiana solar que no deja pasar energías negativas. En asuntos legales, atrae justicia a tu favor.</p>
+    <h3>Formas de Uso</h3>
+    <ul>
+        <li><strong>Aceite infusionado:</strong> Flores secas en aceite de oliva/almendra por 4-6 semanas. Para toda afección de piel.</li>
+        <li><strong>Té suave:</strong> Pocas flores en agua caliente. Para inflamación interna y regulación menstrual.</li>
+        <li><strong>Baño de limpia:</strong> Con flores frescas o secas para protección solar, vitalidad y confianza.</li>
+        <li><strong>Cataplasma:</strong> Flores machacadas directo sobre heridas menores.</li>
+    </ul>
+    <div class="precaution"><strong>⚠️ Precauciones:</strong> No ingerir durante el embarazo (puede estimular contracciones uterinas).</div>
+</div>
+
+<!-- MENTA -->
+<div class="element-card" id="menta">
+    <h2>✦ Menta / Mint</h2>
+    <p class="element-meta"><em>Mentha piperita / Mentha spicata</em> — <span class="elemento air">Elemento: Aire</span> | Planeta: Mercurio</p>
+    <h3>Beneficios para el Cuerpo</h3>
+    <p>La menta es DESPERTAR INSTANTÁNEO. Excelente digestiva que alivia náuseas, gases, síndrome de intestino irritable y dolor estomacal. Como descongestionante, abre vías respiratorias al instante. Es analgésica suave para dolores de cabeza (aplicada en sienes diluida en aceite). Refresca y energiza sin cafeína.</p>
+    <h3 class="spiritual">Beneficios Espirituales</h3>
+    <p>Hierba de los CAMINOS ABIERTOS y la PROSPERIDAD. La menta atrae dinero — colocar hojas frescas en la cartera o la caja registradora de un negocio invita clientes y ventas. Despierta la mente para la comunicación clara. Limpia los bloqueos que impiden el progreso.</p>
+    <h3>Formas de Uso</h3>
+    <ul>
+        <li><strong>Té:</strong> Hojas frescas o secas en agua caliente. Para digestión, frescura y energía.</li>
+        <li><strong>Steam:</strong> Hojas en agua hirviente, inhalar vapor. Para congestión nasal y claridad mental.</li>
+        <li><strong>Baño de limpia:</strong> Hojas abundantes para abrir caminos y atraer abundancia.</li>
+        <li><strong>Tópico:</strong> Aceite esencial diluido en sienes para dolor de cabeza.</li>
+    </ul>
+    <div class="precaution"><strong>⚠️ Precauciones:</strong> Evitar aceite esencial puro en niños menores de 3 años. Moderar durante la lactancia.</div>
+</div>
+
+<!-- MULLEIN -->
+<div class="element-card" id="mullein">
+    <h2>✦ Mullein / Gordolobo</h2>
+    <p class="element-meta"><em>Verbascum thapsus</em> — <span class="elemento fire">Elemento: Fuego</span> | Planeta: Saturno</p>
+    <h3>Beneficios para el Cuerpo</h3>
+    <p>El gordolobo es el GUARDIÁN DE LOS PULMONES. Su acción expectorante y demulcente lo hace indispensable para tos crónica, bronquitis, asma, congestión de pecho y garganta irritada. Suaviza y protege las membranas mucosas del sistema respiratorio.</p>
+    <h3 class="spiritual">Beneficios Espirituales</h3>
+    <p>Planta de CORAJE y PROTECCIÓN ANCESTRAL. En la antigüedad, las hojas secas se usaban como mechas de antorcha — iluminaban el camino en la oscuridad. Aleja pesadillas, desterra espíritus negativos y da valor para enfrentar lo desconocido. Es la planta del guerrero espiritual.</p>
+    <h3>Formas de Uso</h3>
+    <ul>
+        <li><strong>Té:</strong> Hojas secas en agua caliente, SIEMPRE filtrar con tela fina. Para sistema respiratorio.</li>
+        <li><strong>Steam:</strong> Hojas en agua hirviente para abrir pulmones congestionados.</li>
+        <li><strong>Aceite de flores:</strong> Flores frescas en aceite de oliva al sol 2 semanas. Para dolor de oídos.</li>
+        <li><strong>Sahumerio:</strong> Hojas secas quemadas para protección del espacio.</li>
+    </ul>
+    <div class="precaution"><strong>⚠️ Precauciones:</strong> SIEMPRE colar con filtro de tela — los pelitos microscópicos de la hoja pueden irritar severamente la garganta.</div>
+</div>
+
+<!-- SALVIA -->
+<div class="element-card" id="salvia">
+    <h2>✦ Salvia / Sage</h2>
+    <p class="element-meta"><em>Salvia officinalis / Salvia apiana</em> — <span class="elemento air">Elemento: Aire</span> | Planeta: Júpiter</p>
+    <h3>Beneficios para el Cuerpo</h3>
+    <p>La salvia es MEDICINA FEMENINA por excelencia. Regula hormonas, alivia sofocos de menopausia, reduce sudoración excesiva. Es antiséptica potente — las gárgaras de salvia sanan dolor de garganta e infecciones bucales. También mejora la memoria y la función cognitiva.</p>
+    <h3 class="spiritual">Beneficios Espirituales</h3>
+    <p>La MAESTRA DE LA LIMPIEZA ENERGÉTICA. No hay planta más reconocida para purificar espacios, personas y objetos. El humo de salvia rompe energías estancadas, limpia la negatividad acumulada, y renueva completamente la vibración de un espacio. Se usa al entrar a un nuevo hogar, después de discusiones, o cuando algo "se siente pesado."</p>
+    <h3>Formas de Uso</h3>
+    <ul>
+        <li><strong>Sahumerio/Smudge:</strong> Atado de hojas secas encendido, dejando que el humo recorra todo el espacio.</li>
+        <li><strong>Té:</strong> Para garganta, regulación hormonal y memoria (no en exceso).</li>
+        <li><strong>Gárgaras:</strong> Infusión concentrada para infecciones orales.</li>
+        <li><strong>Baño de limpia:</strong> Para cortar ataduras energéticas y renovar el aura.</li>
+    </ul>
+    <div class="precaution"><strong>⚠️ Precauciones:</strong> No usar en exceso durante embarazo o lactancia. La salvia blanca es sagrada para pueblos indígenas — usar con respeto y conciencia cultural.</div>
+</div>
+
+<!-- ROMERO -->
+<div class="element-card" id="romero">
+    <h2>✦ Romero / Rosemary</h2>
+    <p class="element-meta"><em>Rosmarinus officinalis</em> — <span class="elemento fire">Elemento: Fuego</span> | Planeta: Sol</p>
+    <h3>Beneficios para el Cuerpo</h3>
+    <p>El romero es CIRCULACIÓN Y MEMORIA. Estimula el flujo sanguíneo, mejora la concentración y la retención de memoria. Alivia dolores musculares y articulares, estimula el crecimiento capilar y fortalece el cabello. Es un antioxidante potente que protege las células del envejecimiento.</p>
+    <h3 class="spiritual">Beneficios Espirituales</h3>
+    <p>PROTECCIÓN, PURIFICACIÓN y RECUERDO. El romero protege el hogar con la misma fuerza que la salvia. Se usa en funerales para recordar a los que ya no están. Fortalece la fidelidad en relaciones y aclara la mente para tomar decisiones certeras.</p>
+    <h3>Formas de Uso</h3>
+    <ul>
+        <li><strong>Té:</strong> Ramita en agua caliente para circulación, digestión y memoria.</li>
+        <li><strong>Agua de romero:</strong> Infusión concentrada para enjuague capilar.</li>
+        <li><strong>Baño de limpia:</strong> Para protección, claridad mental y fuerza interior.</li>
+        <li><strong>Sahumerio:</strong> Ramas secas quemadas para purificar.</li>
+    </ul>
+    <div class="precaution"><strong>⚠️ Precauciones:</strong> Evitar dosis altas durante embarazo. No ingerir aceite esencial. Precaución en personas con epilepsia.</div>
+</div>
+
+<!-- JAMAICA -->
+<div class="element-card" id="jamaica">
+    <h2>✦ Flor de Jamaica / Hibiscus</h2>
+    <p class="element-meta"><em>Hibiscus sabdariffa</em> — <span class="elemento water">Elemento: Agua</span> | Planeta: Venus</p>
+    <h3>Beneficios para el Cuerpo</h3>
+    <p>La jamaica es CORAZÓN SANO. Estudios demuestran que reduce la presión arterial de forma natural, baja el colesterol LDL, y es rica en antioxidantes y vitamina C. Es diurética, apoya la pérdida de peso, y protege el hígado.</p>
+    <h3 class="spiritual">Beneficios Espirituales</h3>
+    <p>Flor del AMOR PROPIO, la PASIÓN y la DIVINIDAD FEMENINA. Abre el corazón para recibir y dar amor. Se usa en trabajos de sensualidad sagrada, autoestima, y para atraer relaciones apasionadas. Conecta con la energía de Venus.</p>
+    <h3>Formas de Uso</h3>
+    <ul>
+        <li><strong>Té/Agua fresca:</strong> Flores secas en agua caliente o fría. Para salud cardiovascular.</li>
+        <li><strong>Baño de limpia:</strong> Flores en agua tibia para amor propio y atraer romance.</li>
+        <li><strong>Steam facial:</strong> Para piel radiante — los antioxidantes rejuvenecen.</li>
+        <li><strong>Poción de amor propio:</strong> Té de jamaica con miel y canela, bebido con intención.</li>
+    </ul>
+    <div class="precaution"><strong>⚠️ Precauciones:</strong> Puede bajar la presión excesivamente en personas hipotensas. Interactúa con medicamentos antihipertensivos.</div>
+</div>
+
+<!-- RUDA -->
+<div class="element-card" id="ruda">
+    <h2>✦ Ruda / Rue</h2>
+    <p class="element-meta"><em>Ruta graveolens</em> — <span class="elemento fire">Elemento: Fuego</span> | Planeta: Marte & Sol</p>
+    <h3>Beneficios para el Cuerpo</h3>
+    <p>La ruda tiene propiedades antiespasmódicas y es emenagoga (estimula la menstruación). En uso externo, funciona como repelente de insectos y tiene acción antimicrobiana. Históricamente se usó para aliviar dolor articular.</p>
+    <h3 class="spiritual">Beneficios Espirituales</h3>
+    <p>La REINA ABSOLUTA DE LA PROTECCIÓN en la tradición latinoamericana. No hay planta más poderosa para romper mal de ojo, envidia, brujería y energía negativa enviada. Cuando una planta de ruda en tu hogar se seca sin razón, se dice que "se llevó" algo negativo dirigido a ti.</p>
+    <h3>Formas de Uso</h3>
+    <ul>
+        <li><strong>Ramo detrás de la puerta:</strong> Para protección permanente del hogar.</li>
+        <li><strong>Baño de limpia:</strong> Ramas frescas en agua para romper envidia y mal de ojo.</li>
+        <li><strong>Agua de ruda:</strong> Para limpiar negocios y atraer clientes (trapear con ella).</li>
+        <li><strong>Planta viva:</strong> En la entrada del hogar como guardiana energética.</li>
+    </ul>
+    <div class="precaution danger"><strong>⚠️ PRECAUCIÓN IMPORTANTE:</strong> TÓXICA en uso interno. NUNCA ingerir durante embarazo — es ABORTIVA. Usar solo externamente. Puede causar fotosensibilidad severa.</div>
+</div>
+
+<!-- ARTEMISA -->
+<div class="element-card" id="artemisa">
+    <h2>✦ Artemisa / Mugwort</h2>
+    <p class="element-meta"><em>Artemisia vulgaris</em> — <span class="elemento earth">Elemento: Tierra & Aire</span> | Planeta: Luna & Venus</p>
+    <h3>Beneficios para el Cuerpo</h3>
+    <p>La artemisa es MEDICINA LUNAR FEMENINA. Regula el ciclo menstrual, alivia cólicos y dolores menstruales, estimula la digestión y es antiparasitaria. En la medicina china es la base de la moxibustión. Calma los nervios y relaja el sistema nervioso.</p>
+    <h3 class="spiritual">Beneficios Espirituales</h3>
+    <p>La PLANTA DE LOS SUEÑOS Y LA VISIÓN INTERIOR. No existe hierba más asociada con los sueños lúcidos y proféticos. Abre la puerta entre el mundo consciente y el inconsciente. Potencia la intuición, activa el tercer ojo, y facilita viajes astrales.</p>
+    <h3>Formas de Uso</h3>
+    <ul>
+        <li><strong>Sachet bajo la almohada:</strong> Hojas secas en bolsita de tela para sueños lúcidos.</li>
+        <li><strong>Té antes de dormir:</strong> Infusión ligera para inducir sueños proféticos.</li>
+        <li><strong>Sahumerio:</strong> Para abrir portales intuitivos antes de rituales de adivinación.</li>
+        <li><strong>Baño de limpia:</strong> Para conectar con lo femenino divino y despertar la intuición.</li>
+    </ul>
+    <div class="precaution"><strong>⚠️ Precauciones:</strong> No usar durante embarazo. No consumir en exceso prolongado. Puede intensificar sueños en personas con ansiedad nocturna.</div>
+</div>
+
+<!-- LAVANDA -->
+<div class="element-card" id="lavanda">
+    <h2>✦ Lavanda / Lavender</h2>
+    <p class="element-meta"><em>Lavandula angustifolia</em> — <span class="elemento air">Elemento: Aire</span> | Planeta: Mercurio</p>
+    <h3>Beneficios para el Cuerpo</h3>
+    <p>La lavanda es PAZ LÍQUIDA. Su efecto ansiolítico está respaldado por múltiples estudios — reduce cortisol, baja la frecuencia cardíaca, e induce relajación real. Alivia insomnio, dolor de cabeza tensional, quemaduras leves. Es antiséptica y cicatrizante suave.</p>
+    <h3 class="spiritual">Beneficios Espirituales</h3>
+    <p>ARMONÍA, AMOR PACÍFICO y PURIFICACIÓN SUAVE. La lavanda calma discusiones, armoniza el aura después de conflictos, y atrae relaciones basadas en la paz y el respeto mutuo. Es la hierba del descanso sagrado.</p>
+    <h3>Formas de Uso</h3>
+    <ul>
+        <li><strong>Té:</strong> Flores secas en agua caliente para ansiedad, insomnio y calma.</li>
+        <li><strong>Aceite esencial:</strong> En difusor, en almohada para dormir, diluido para quemaduras.</li>
+        <li><strong>Baño de limpia:</strong> Para paz emocional profunda después de periodos difíciles.</li>
+        <li><strong>Sachets:</strong> En cajón de ropa, bajo la almohada, en el auto.</li>
+    </ul>
+    <div class="precaution"><strong>⚠️ Precauciones:</strong> Generalmente muy segura. Precaución con uso prolongado en niños prepúberes (efecto estrogénico potencial).</div>
+</div>
+
+<!-- ROSAS -->
+<div class="element-card" id="rosas">
+    <h2>✦ Rosas / Roses</h2>
+    <p class="element-meta"><em>Rosa spp.</em> — <span class="elemento water">Elemento: Agua</span> | Planeta: Venus</p>
+    <h3>Beneficios para el Cuerpo</h3>
+    <p>La rosa es BELLEZA DESDE ADENTRO. Es astringente suave que tonifica la piel, reduce enrojecimiento, y equilibra la producción de grasa facial. El escaramujo es riquísimo en vitamina C y regenera la piel. Los pétalos en té calman la ansiedad.</p>
+    <h3 class="spiritual">Beneficios Espirituales</h3>
+    <p>AMOR EN SU FORMA MÁS ELEVADA. La rosa vibra en la frecuencia más alta del amor — amor propio, romántico, divino y compasión universal. Eleva la vibración de cualquier espacio instantáneamente. Es la ofrenda universal que toda energía benéfica acepta.</p>
+    <h3>Formas de Uso</h3>
+    <ul>
+        <li><strong>Agua de rosas:</strong> Tónico facial, rituales de amor y limpiar altares.</li>
+        <li><strong>Té de pétalos:</strong> Para calmar el corazón y abrir la receptividad al amor.</li>
+        <li><strong>Baño de limpia:</strong> Pétalos en agua tibia para amor propio y sanación del corazón.</li>
+        <li><strong>Ofrenda:</strong> Pétalos sobre el altar o esparcidos en ritual.</li>
+    </ul>
+    <div class="precaution"><strong>⚠️ Precauciones:</strong> SIEMPRE usar rosas orgánicas/no tratadas para consumo. Las de florería están cargadas de pesticidas.</div>
+</div>
+
+<!-- ARNICA -->
+<div class="element-card" id="arnica">
+    <h2>✦ Árnica / Arnica</h2>
+    <p class="element-meta"><em>Arnica montana</em> — <span class="elemento fire">Elemento: Fuego</span> | Planeta: Sol</p>
+    <h3>Beneficios para el Cuerpo</h3>
+    <p>El árnica es el SANADOR DE GOLPES. Su poder antiinflamatorio y analgésico es excepcional para moretones, hematomas, hinchazón post-trauma, dolor muscular intenso, esguinces, y dolor articular. Acelera la recuperación después de cirugías.</p>
+    <h3 class="spiritual">Beneficios Espirituales</h3>
+    <p>Planta de RESILIENCIA Y RECUPERACIÓN. Así como sana golpes físicos, energéticamente ayuda a sanar los "golpes de la vida" — traumas, decepciones, caídas emocionales. Fortalece el espíritu guerrero interior.</p>
+    <h3>Formas de Uso</h3>
+    <ul>
+        <li><strong>Aceite/Crema tópica:</strong> Sobre moretones, dolores musculares e inflamación (solo piel intacta).</li>
+        <li><strong>Compresa:</strong> Infusión tibia aplicada con tela sobre zonas inflamadas.</li>
+        <li><strong>Baño de pies:</strong> Para cansancio extremo y piernas pesadas.</li>
+    </ul>
+    <div class="precaution danger"><strong>⚠️ PRECAUCIÓN:</strong> SOLO USO EXTERNO — tóxica si se ingiere. NUNCA aplicar sobre heridas abiertas o piel rota.</div>
+</div>
+
+<!-- LEMON BALM -->
+<div class="element-card" id="lemonbalm">
+    <h2>✦ Lemon Balm / Toronjil</h2>
+    <p class="element-meta"><em>Melissa officinalis</em> — <span class="elemento water">Elemento: Agua</span> | Planeta: Luna</p>
+    <h3>Beneficios para el Cuerpo</h3>
+    <p>El toronjil es CALMA PROFUNDA. Reduce ansiedad, mejora el sueño, y calma el corazón acelerado. Es ANTIVIRAL potente contra el herpes simplex. Alivia cólicos digestivos y espasmos.</p>
+    <h3 class="spiritual">Beneficios Espirituales</h3>
+    <p>Hierba del CORAZÓN SANADO y la DULZURA. Atrae amistades verdaderas y relaciones genuinas. Alivia el duelo, la tristeza profunda y el corazón roto. Trae éxito con suavidad y gracia.</p>
+    <h3>Formas de Uso</h3>
+    <ul>
+        <li><strong>Té:</strong> Hojas frescas o secas para calma, digestión y como antiviral diario.</li>
+        <li><strong>Compresa:</strong> Infusión concentrada sobre brotes de herpes labial.</li>
+        <li><strong>Baño de limpia:</strong> Para sanar el corazón después de pérdidas o rupturas.</li>
+        <li><strong>Sachets:</strong> Para atraer amor genuino y amistades leales.</li>
+    </ul>
+    <div class="precaution"><strong>⚠️ Precauciones:</strong> Puede interferir con medicamentos para la tiroides (levotiroxina). Consultar al médico.</div>
+</div>
+
+<!-- EUCALIPTO -->
+<div class="element-card" id="eucalipto">
+    <h2>✦ Eucalipto / Eucalyptus</h2>
+    <p class="element-meta"><em>Eucalyptus globulus</em> — <span class="elemento water">Elemento: Agua & Aire</span> | Planeta: Luna</p>
+    <h3>Beneficios para el Cuerpo</h3>
+    <p>El eucalipto es RESPIRACIÓN LIBRE. Es el descongestionante natural más poderoso. Abre las vías respiratorias al instante, combate sinusitis, bronquitis, resfriados y gripe. Es antiséptico y febrífugo.</p>
+    <h3 class="spiritual">Beneficios Espirituales</h3>
+    <p>SANACIÓN y RENOVACIÓN ENERGÉTICA. Limpia la energía de enfermedad — física y energética. Renueva la vitalidad de espacios estancados o "muertos." Se usa para "limpiar" a alguien que ha estado enfermo.</p>
+    <h3>Formas de Uso</h3>
+    <ul>
+        <li><strong>Steam:</strong> Hojas en agua hirviente, inhalar con toalla. Para congestión severa.</li>
+        <li><strong>Baño de limpia:</strong> Para limpiar energía de enfermedad y renovar vitalidad.</li>
+        <li><strong>Sahumerio:</strong> Hojas secas para purificar espacios cerrados.</li>
+        <li><strong>En la regadera:</strong> Ramo colgado en la ducha — el vapor libera sus aceites.</li>
+    </ul>
+    <div class="precaution"><strong>⚠️ Precauciones:</strong> No aplicar aceite esencial en cara de niños menores de 3 años. No ingerir. Precaución con asma severa.</div>
+</div>
+
+<!-- JAZMIN -->
+<div class="element-card" id="jasmin">
+    <h2>✦ Jazmín / Jasmine</h2>
+    <p class="element-meta"><em>Jasminum officinale</em> — <span class="elemento water">Elemento: Agua</span> | Planeta: Luna & Venus</p>
+    <h3>Beneficios para el Cuerpo</h3>
+    <p>El jazmín es SENSUALIDAD Y CALMA. Su aroma es un antidepresivo natural que eleva el ánimo y reduce la ansiedad. Tiene propiedades antiespasmódicas y mejora la calidad del sueño.</p>
+    <h3 class="spiritual">Beneficios Espirituales</h3>
+    <p>AMOR DIVINO y LUNA SAGRADA. Atrae amor verdadero y almas afines. Es la flor de la luna y la noche. Eleva la vibración espiritual, despierta la intuición femenina, y conecta con la sensualidad sagrada.</p>
+    <h3>Formas de Uso</h3>
+    <ul>
+        <li><strong>Aceite esencial:</strong> Para rituales de amor, seducción sagrada y autoestima.</li>
+        <li><strong>Té suave:</strong> Flores en agua caliente para calmar nervios.</li>
+        <li><strong>Baño de limpia:</strong> Para atraer amor verdadero y conectar con la energía lunar.</li>
+        <li><strong>Ofrenda a la luna:</strong> Flores frescas en agua bajo la luna llena.</li>
+    </ul>
+    <div class="precaution"><strong>⚠️ Precauciones:</strong> Desconfiar de aceites esenciales baratos (probablemente sintéticos). No ingerir aceite esencial.</div>
+</div>
+
+<div class="section-divider">Especias y Plantas</div>
+
+<!-- CANELA -->
+<div class="element-card" id="canela">
+    <h2>✦ Canela / Cinnamon</h2>
+    <p class="element-meta"><em>Cinnamomum verum / C. cassia</em> — <span class="elemento fire">Elemento: Fuego</span> | Planeta: Sol & Marte</p>
+    <h3>Beneficios para el Cuerpo</h3>
+    <p>La canela es FUEGO SANADOR. Regula el azúcar en sangre, es antimicrobiana potente, estimula la circulación, calienta el cuerpo desde adentro, mejora la digestión y tiene acción termogénica. Es antioxidante y fortalece el sistema inmune.</p>
+    <h3 class="spiritual">Beneficios Espirituales</h3>
+    <p>La canela es ABUNDANCIA INSTANTÁNEA y ACELERACIÓN. Es la especia que más rápido atrae dinero y prosperidad. Acelera CUALQUIER trabajo espiritual. Enciende la pasión, atrae éxito en negocios. Ritual: soplar canela en polvo hacia adentro de tu puerta el 1° de cada mes.</p>
+    <h3>Formas de Uso</h3>
+    <ul>
+        <li><strong>Té:</strong> Raja o polvo en agua caliente para circulación y calor interno.</li>
+        <li><strong>Ritual del 1°:</strong> Soplar canela desde afuera hacia adentro de tu puerta cada inicio de mes.</li>
+        <li><strong>Baño de limpia:</strong> Para abundancia, éxito y encender la pasión.</li>
+        <li><strong>Sahumerio:</strong> Rajas quemadas para activar energía y atraer prosperidad.</li>
+    </ul>
+    <div class="precaution"><strong>⚠️ Precauciones:</strong> La canela CASSIA contiene cumarina que puede dañar el hígado en exceso. Preferir canela de CEILÁN para consumo frecuente.</div>
+</div>
+
+<!-- CLAVOS -->
+<div class="element-card" id="clavos">
+    <h2>✦ Clavos de Olor / Cloves</h2>
+    <p class="element-meta"><em>Syzygium aromaticum</em> — <span class="elemento fire">Elemento: Fuego</span> | Planeta: Júpiter</p>
+    <h3>Beneficios para el Cuerpo</h3>
+    <p>El clavo es ANALGESIA NATURAL. Contiene eugenol, un analgésico potente — el remedio clásico para dolor de muelas. Es antiséptico, antiparasitario intestinal, y tiene propiedades antifúngicas contra candida.</p>
+    <h3 class="spiritual">Beneficios Espirituales</h3>
+    <p>El SILENCIADOR DE CHISMES y el IMÁN DE PROSPERIDAD. Se mastican clavos para "cerrar bocas" — callar personas que hablan mal de ti. En combinación con canela, es una de las mezclas más poderosas para atraer dinero.</p>
+    <h3>Formas de Uso</h3>
+    <ul>
+        <li><strong>Té:</strong> 3-4 clavos en agua caliente para digestión y parásitos.</li>
+        <li><strong>Dolor de muelas:</strong> Clavo o aceite de clavo directo en la muela.</li>
+        <li><strong>Baño de limpia:</strong> Para cortar chismes y proteger tu reputación.</li>
+        <li><strong>En la cartera:</strong> 3 clavos para atraer dinero constante.</li>
+    </ul>
+    <div class="precaution"><strong>⚠️ Precauciones:</strong> El aceite esencial es MUY concentrado — siempre diluir. Puede irritar el estómago en exceso.</div>
+</div>
+
+<!-- SAUCO -->
+<div class="element-card" id="sauco">
+    <h2>✦ Semillas de Saúco / Elderberry</h2>
+    <p class="element-meta"><em>Sambucus nigra</em> — <span class="elemento water">Elemento: Agua</span> | Planeta: Venus</p>
+    <h3>Beneficios para el Cuerpo</h3>
+    <p>El saúco es INMUNIDAD PODEROSA. Es uno de los antivirales naturales más estudiados — reduce la duración y severidad de gripes y resfriados. Rico en vitamina C, antioxidantes y flavonoides.</p>
+    <h3 class="spiritual">Beneficios Espirituales</h3>
+    <p>El ÁRBOL ANCESTRAL de protección. Conocido como "el árbol de la bruja" — conecta con los espíritus de la tierra y los ancestros. Plantar un saúco protege toda la casa. Tiene la energía de la abuela sabia.</p>
+    <h3>Formas de Uso</h3>
+    <ul>
+        <li><strong>Jarabe:</strong> Bayas cocidas con miel y especias. Tomar diario para inmunidad.</li>
+        <li><strong>Té:</strong> Bayas secas (siempre cocidas primero) para fortalecimiento inmune.</li>
+        <li><strong>Baño de limpia:</strong> Para protección ancestral y conexión con la sabiduría antigua.</li>
+    </ul>
+    <div class="precaution danger"><strong>⚠️ PRECAUCIÓN:</strong> Las bayas CRUDAS son TÓXICAS. SIEMPRE cocinar antes de consumir. Las hojas, corteza y semillas crudas son tóxicas.</div>
+</div>
+
+<!-- LIMON -->
+<div class="element-card" id="limon">
+    <h2>✦ Limón / Lemon</h2>
+    <p class="element-meta"><em>Citrus limon</em> — <span class="elemento water">Elemento: Agua</span> | Planeta: Luna</p>
+    <h3>Beneficios para el Cuerpo</h3>
+    <p>El limón es DESINTOXICACIÓN Y VITALIDAD. Alcaliniza el cuerpo, apoya al hígado en su función depurativa, es rico en vitamina C, antibacteriano. Estimula la digestión, aclara la piel, y fortalece la inmunidad.</p>
+    <h3 class="spiritual">Beneficios Espirituales</h3>
+    <p>El limón es CORTE Y LIMPIEZA RADICAL. La fruta que "absorbe" y neutraliza energía negativa como una esponja. Se usa para detectar envidias, para cortar lazos negativos, y para limpiar el aura de cargas ajenas.</p>
+    <h3>Formas de Uso</h3>
+    <ul>
+        <li><strong>Agua con limón:</strong> En ayunas para desintoxicación diaria.</li>
+        <li><strong>Baño de limpia:</strong> Jugo de limones en agua para cortar todo lo negativo.</li>
+        <li><strong>En las esquinas:</strong> Limones cortados para absorber energía negativa (cambiar cada 7 días).</li>
+        <li><strong>Lectura:</strong> Partir un limón después de pasarlo por el cuerpo — revela lo que absorbió.</li>
+    </ul>
+    <div class="precaution"><strong>⚠️ Precauciones:</strong> Erosiona esmalte dental en exceso. El jugo en la piel + sol causa QUEMADURAS (fitofotodermatitis).</div>
+</div>
+
+<!-- AVENA -->
+<div class="element-card" id="avena">
+    <h2>✦ Avena / Oats</h2>
+    <p class="element-meta"><em>Avena sativa</em> — <span class="elemento earth">Elemento: Tierra</span> | Planeta: Venus</p>
+    <h3>Beneficios para el Cuerpo</h3>
+    <p>La avena es NUTRICIÓN Y RESTAURACIÓN. Emoliente excepcional para piel — calma eczema, dermatitis, piel seca e irritada. Alimenta el sistema nervioso, reduce colesterol, estabiliza azúcar en sangre.</p>
+    <h3 class="spiritual">Beneficios Espirituales</h3>
+    <p>ABUNDANCIA TERRENAL y ESTABILIDAD. Atrae la prosperidad constante y segura del alimento que nunca falta. Conecta con la gratitud hacia la tierra. Es grounding: te ancla cuando te sientes inestable.</p>
+    <h3>Formas de Uso</h3>
+    <ul>
+        <li><strong>Baño de avena:</strong> Avena molida en media/bolsa de tela en la tina. Para piel y protección suave.</li>
+        <li><strong>Té de paja de avena:</strong> Para sistema nervioso exhausto.</li>
+        <li><strong>Sachets:</strong> Granos de avena en bolsitas para prosperidad constante.</li>
+        <li><strong>Ofrenda a la tierra:</strong> Esparcir avena en el jardín como agradecimiento.</li>
+    </ul>
+    <div class="precaution"><strong>⚠️ Precauciones:</strong> Celíacos: verificar que sea avena certificada sin gluten.</div>
+</div>
+
+<!-- ARROZ -->
+<div class="element-card" id="arroz">
+    <h2>✦ Arroz / Rice</h2>
+    <p class="element-meta"><em>Oryza sativa</em> — <span class="elemento earth">Elemento: Tierra</span> | Planeta: Sol</p>
+    <h3>Beneficios para el Cuerpo</h3>
+    <p>El agua de arroz es astringente que tonifica la piel, reduce poros, hidrata y da luminosidad al cabello. Es demulcente que calma estómagos irritados.</p>
+    <h3 class="spiritual">Beneficios Espirituales</h3>
+    <p>FERTILIDAD, ABUNDANCIA y BENDICIÓN ANCESTRAL. Se lanza en bodas para fertilidad. Un frasco de arroz en la cocina que nunca se vacíe simboliza que la abundancia nunca faltará.</p>
+    <h3>Formas de Uso</h3>
+    <ul>
+        <li><strong>Agua de arroz:</strong> Remojar arroz 30 min-24 hrs. Para piel, cabello y estómago.</li>
+        <li><strong>Baño de limpia:</strong> Agua de arroz para abundancia y bendiciones.</li>
+        <li><strong>En las esquinas:</strong> Montoncitos de arroz para protección y prosperidad.</li>
+        <li><strong>Ritual:</strong> Tarro de arroz en la cocina con una moneda, siempre mantenerlo lleno.</li>
+    </ul>
+    <div class="precaution"><strong>⚠️ Precauciones:</strong> Sin contraindicaciones significativas en uso externo.</div>
+</div>
+
+<div class="section-divider">Minerales y Piedras</div>
+
+<!-- SAL -->
+<div class="element-card" id="sal">
+    <h2>✦ Sal / Salt</h2>
+    <p class="element-meta">NaCl (Cloruro de sodio) — <span class="elemento earth">Elemento: Tierra</span> | Planeta: Tierra</p>
+    <h3>Beneficios para el Cuerpo</h3>
+    <p>La sal es PURIFICACIÓN MINERAL. Antiséptica natural para heridas y garganta, exfoliante, descongestiva nasal (lavados salinos), y en baños relaja músculos y alivia dolores.</p>
+    <h3 class="spiritual">Beneficios Espirituales</h3>
+    <p>El PILAR FUNDAMENTAL de toda protección y limpieza espiritual. Es la sustancia que más rápido absorbe y neutraliza energía negativa. Crea barreras impenetrables. TODAS las tradiciones del mundo la reconocen como purificadora.</p>
+    <h3>Formas de Uso</h3>
+    <ul>
+        <li><strong>Baño de limpieza:</strong> Puñado de sal gruesa en agua — el baño de limpia más poderoso.</li>
+        <li><strong>Líneas en puertas y ventanas:</strong> Para que nada negativo entre.</li>
+        <li><strong>En los rincones:</strong> Platitos con sal que absorben negatividad (cambiar semanalmente).</li>
+        <li><strong>Scrub exfoliante:</strong> Sal fina con aceite para piel renovada.</li>
+    </ul>
+    <div class="precaution"><strong>⚠️ Precauciones:</strong> No usar en heridas abiertas. Enjuagar después de baños espirituales. Hidratar la piel después.</div>
+</div>
+
+<!-- MAGNESIO -->
+<div class="element-card" id="magnesio">
+    <h2>✦ Magnesio / Magnesium</h2>
+    <p class="element-meta">MgSO₄ (Sulfato de magnesio) — <span class="elemento earth">Elemento: Tierra</span> | Planeta: Saturno</p>
+    <h3>Beneficios para el Cuerpo</h3>
+    <p>El magnesio es RESTAURACIÓN PROFUNDA. Relajante muscular que alivia calambres, tensión, y fibromialgia. Reduce estrés y cortisol a través de la absorción cutánea. Mejora la calidad del sueño.</p>
+    <h3 class="spiritual">Beneficios Espirituales</h3>
+    <p>ANCLAJE Y SOLTAR. Es grounding profundo — te devuelve a tu cuerpo cuando estás dispersa. Ayuda a SOLTAR patrones, relaciones y pensamientos repetitivos. Recalibra el cuerpo energético.</p>
+    <h3>Formas de Uso</h3>
+    <ul>
+        <li><strong>Baño:</strong> 2 tazas de sales de Epsom en tina caliente, remojar 20 min mínimo.</li>
+        <li><strong>Foot soak:</strong> Baño de pies para grounding rápido.</li>
+        <li><strong>Combinado:</strong> Agregar lavanda, eucalipto o romero al baño para efecto dual.</li>
+        <li><strong>Post-ritual:</strong> Baño de magnesio después de limpiezas intensas.</li>
+    </ul>
+    <div class="precaution"><strong>⚠️ Precauciones:</strong> No usar en exceso con problemas renales. No ingerir sin supervisión médica.</div>
+</div>
+
+<!-- CRISTALES DE MENTA -->
+<div class="element-card" id="mentacristales">
+    <h2>✦ Cristales de Menta / Mint Crystals</h2>
+    <p class="element-meta">L-Menthol cristalizado — <span class="elemento air">Elemento: Aire</span> | Planeta: Mercurio</p>
+    <h3>Beneficios para el Cuerpo</h3>
+    <p>Los cristales de menta son POTENCIA CONCENTRADA. Analgésicos tópicos que adormecen dolor muscular al contacto. Descongestionantes poderosos que abren las vías respiratorias al instante.</p>
+    <h3 class="spiritual">Beneficios Espirituales</h3>
+    <p>CLARIDAD MENTAL INSTANTÁNEA y ACTIVACIÓN. Despiertan la mente como un rayo de luz. Abren el tercer ojo, despejan confusión, y atraen ideas nuevas y frescas.</p>
+    <h3>Formas de Uso</h3>
+    <ul>
+        <li><strong>Steam:</strong> 2-3 cristales (NO más) en agua hirviente para congestión o claridad.</li>
+        <li><strong>Baño de pies:</strong> Pocos cristales en agua fría para refrescar y energizar.</li>
+        <li><strong>En aceite:</strong> Disueltos en aceite portador para masaje en zonas de dolor.</li>
+    </ul>
+    <div class="precaution danger"><strong>⚠️ PRECAUCIÓN:</strong> EXTREMADAMENTE CONCENTRADO. Usar cantidades mínimas. Lejos de ojos. NO en niños menores de 6 años. Puede quemar la piel sin diluir.</div>
+</div>
+
+<!-- FRANKINCENSE -->
+<div class="element-card" id="frankincense">
+    <h2>✦ Frankincense / Olíbano</h2>
+    <p class="element-meta"><em>Boswellia sacra</em> — <span class="elemento fire">Elemento: Fuego</span> | Planeta: Sol</p>
+    <h3>Beneficios para el Cuerpo</h3>
+    <p>El frankincense es ANTIINFLAMACIÓN SAGRADA. Potente antiinflamatorio que ayuda con artritis, dolor crónico y problemas autoinmunes. Es inmunomodulador y calma profundamente el sistema nervioso.</p>
+    <h3 class="spiritual">Beneficios Espirituales</h3>
+    <p>La CONEXIÓN CON LO DIVINO. La resina sagrada por excelencia, usada en TODAS las tradiciones del mundo. Eleva la vibración a su punto más alto, purifica con la fuerza de lo sagrado, conecta con Dios/Diosa/Fuente, y profundiza cualquier meditación.</p>
+    <h3>Formas de Uso</h3>
+    <ul>
+        <li><strong>Sahumerio:</strong> Resina sobre carbón ardiente para purificación y elevación máxima.</li>
+        <li><strong>Meditación:</strong> Quemar durante la práctica para profundizar conexión divina.</li>
+        <li><strong>Oración:</strong> Acompaña cualquier petición o agradecimiento.</li>
+        <li><strong>Aceite diluido:</strong> Para dolor articular e inflamación.</li>
+    </ul>
+    <div class="precaution"><strong>⚠️ Precauciones:</strong> El humo excesivo en espacios sin ventilación puede irritar vías respiratorias.</div>
+</div>
+
+<!-- OJO DE TIGRE -->
+<div class="element-card" id="tigereye">
+    <h2>✦ Ojo de Tigre / Tiger Eye</h2>
+    <p class="element-meta">Cuarzo microcristalino — <span class="elemento fire">Elemento: Fuego & Tierra</span> | Planeta: Sol | Chakra: Plexo Solar (3°)</p>
+    <h3>Beneficios para el Cuerpo</h3>
+    <p>En cristaloterapia se asocia con el fortalecimiento del sistema digestivo (plexo solar), la estabilización de la energía vital, y la reducción de ansiedad a través de su peso y textura en la mano (grounding táctil).</p>
+    <h3 class="spiritual">Beneficios Espirituales</h3>
+    <p>PROTECCIÓN GUERRERA y EMPODERAMIENTO PERSONAL. La piedra del coraje, la confianza y el poder personal. Protege contra el mal de ojo y la envidia. Da valor para enfrentar retos, atrae prosperidad a través de la ACCIÓN. Fortalece la voluntad y la determinación.</p>
+    <h3>Formas de Uso</h3>
+    <ul>
+        <li><strong>Llevar encima:</strong> En bolsillo o joyería para protección y confianza diaria.</li>
+        <li><strong>En el negocio:</strong> Cerca de la caja para atraer clientes y éxito.</li>
+        <li><strong>Meditación:</strong> Sobre el plexo solar para fortalecer voluntad.</li>
+        <li><strong>Entrevistas/juntas:</strong> En el bolsillo para proyectar seguridad.</li>
+    </ul>
+    <div class="precaution"><strong>⚠️ Cuidado:</strong> Limpiar con sahumerio o luz de luna. Cargar al sol. No sumergir en agua salada prolongadamente.</div>
+</div>
+
+</main>
+
+<footer>
+    <blockquote>"Cada planta es una maestra, cada mineral un guardián. Acércate con respeto, intención clara, y gratitud — y la naturaleza te responderá."</blockquote>
+    <p>✦ Blendara Apothecary — Wonderful Elements ✦</p>
+    <p style="margin-top:15px; font-size:0.85rem;">Siempre investiga interacciones con medicamentos. El uso espiritual no reemplaza tratamiento médico profesional.</p>
+</footer>
+
+</body>
+</html>

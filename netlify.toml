@@ -1,0 +1,22 @@
+# NOTE: This app uses a Node.js server with SQLite.
+# For Netlify/Vercel, you'd need to use Netlify Functions or deploy on Railway/Render instead.
+# For GitHub Pages (static only), export to static HTML.
+#
+# RECOMMENDED: Deploy on Railway.app or Render.com (free tier available)
+# Both support Node.js apps with persistent storage.
+#
+# For Railway:
+#   1. Push to GitHub
+#   2. Connect repo on railway.app
+#   3. Set PORT env variable (Railway sets it automatically)
+#   4. Deploy!
+#
+# For Render:
+#   1. Push to GitHub
+#   2. New Web Service on render.com
+#   3. Build command: npm install && node seed.js
+#   4. Start command: node server.js
+
+[build]
+  command = "npm install && node seed.js"
+  publish = "."

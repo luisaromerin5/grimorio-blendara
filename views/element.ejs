@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>✦ <%= element.name_es %> — Blendara</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700&family=Lora:ital,wght@0,400;0,600;1,400&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <a href="/" class="back-link">← Volver al Grimorio</a>
+
+    <article class="element-detail">
+        <header class="element-header">
+            <div class="element-badge <%= element.element %>"><%= element.element || '✦' %></div>
+            <h1><%= element.name_es %> / <%= element.name_en %></h1>
+            <p class="meta">
+                <% if (element.scientific_name) { %><em><%= element.scientific_name %></em> — <% } %>
+                <% if (element.element) { %>Elemento: <strong><%= element.element %></strong><% } %>
+                <% if (element.planet) { %> | Planeta: <strong><%= element.planet %></strong><% } %>
+                <% if (element.chakra) { %> | Chakra: <strong><%= element.chakra %></strong><% } %>
+            </p>
+        </header>
+
+        <% if (element.body_benefits) { %>
+        <section>
+            <h2>🌱 Beneficios para el Cuerpo</h2>
+            <p><%- element.body_benefits.replace(/\n/g, '<br>') %></p>
+        </section>
+        <% } %>
+
+        <% if (element.spiritual_benefits) { %>
+        <section>
+            <h2>✨ Beneficios Espirituales</h2>
+            <p><%- element.spiritual_benefits.replace(/\n/g, '<br>') %></p>
+        </section>
+        <% } %>
+
+        <% if (element.uses) { %>
+        <section>
+            <h2>📋 Formas de Uso</h2>
+            <div class="uses"><%- element.uses.replace(/\n/g, '<br>') %></div>
+        </section>
+        <% } %>
+
+        <% if (element.precautions) { %>
+        <section class="precaution-section">
+            <h2>⚠️ Precauciones</h2>
+            <p><%- element.precautions.replace(/\n/g, '<br>') %></p>
+        </section>
+        <% } %>
+    </article>
+
+    <footer>
+        <p>✦ Blendara Apothecary ✦</p>
+    </footer>
+</body>
+</html>

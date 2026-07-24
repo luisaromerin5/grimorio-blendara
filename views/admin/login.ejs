@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin — Blendara Grimoire</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700&family=Lora:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/admin.css">
+</head>
+<body class="admin-body">
+    <div class="login-container">
+        <h1>✦ Blendara ✦</h1>
+        <p class="login-subtitle">Grimoire Admin</p>
+        <% if (error) { %>
+            <div class="error-msg"><%= error %></div>
+        <% } %>
+        <form method="POST" action="/admin/login">
+            <input type="text" name="username" placeholder="Usuario" required>
+            <input type="password" name="password" placeholder="Contraseña" required>
+            <button type="submit">Entrar</button>
+        </form>
+        <a href="/" class="back-home">← Volver al Grimorio</a>
+    </div>
+</body>
+</html>

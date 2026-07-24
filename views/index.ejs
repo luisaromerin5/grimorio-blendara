@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>✦ Wonderful Elements — Blendara Apothecary</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700&family=Lora:ital,wght@0,400;0,600;1,400&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <header>
+        <h1>✦ Wonderful Elements ✦</h1>
+        <p class="subtitle">Blendara Apothecary — Grimorio Herbolario</p>
+        <p class="intro">Nature has always kept its secrets within every flower, leaf, root, and mineral. Some have been revealed by science; others live on through stories and rituals passed from one generation to the next.</p>
+    </header>
+
+    <nav id="filters">
+        <button class="filter-btn active" data-filter="all">Todos</button>
+        <button class="filter-btn" data-filter="flower">🌸 Flores</button>
+        <button class="filter-btn" data-filter="herb">🌿 Hierbas</button>
+        <button class="filter-btn" data-filter="spice">🫚 Especias</button>
+        <button class="filter-btn" data-filter="mineral">💎 Minerales</button>
+    </nav>
+
+    <main>
+        <% if (elements.length === 0) { %>
+            <div class="empty-state">
+                <p>✦ El grimorio está vacío. Agrega elementos desde el <a href="/admin">panel de administración</a>.</p>
+            </div>
+        <% } %>
+
+        <div class="grid">
+            <% elements.forEach(el => { %>
+            <a href="/element/<%= el.id %>" class="card" data-category="<%= el.category %>">
+                <div class="card-element-badge <%= el.element %>"><%= el.element || '✦' %></div>
+                <h2><%= el.name_es %></h2>
+                <p class="card-en"><%= el.name_en %></p>
+                <p class="card-scientific"><em><%= el.scientific_name || '' %></em></p>
+                <p class="card-planet"><%= el.planet || '' %></p>
+            </a>
+            <% }); %>
+        </div>
+    </main>
+
+    <footer>
+        <blockquote>"Cada planta es una maestra, cada mineral un guardián."</blockquote>
+        <p>✦ Blendara Apothecary ✦</p>
+    </footer>
+
+    <script>
+        document.querySelectorAll('.filter-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                const filter = btn.dataset.filter;
+                document.querySelectorAll('.card').forEach(card => {
+                    if (filter === 'all' || card.dataset.category === filter) {
+                        card.style.display = '';
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>

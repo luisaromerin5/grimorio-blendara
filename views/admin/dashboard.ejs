@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard — Blendara Admin</title>
+    <link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/admin.css">
+</head>
+<body class="admin-body">
+    <div class="admin-container">
+        <header class="admin-header">
+            <h1>✦ Grimoire Admin</h1>
+            <div class="admin-nav">
+                <span>Hola, <strong><%= username %></strong></span>
+                <a href="/" target="_blank">Ver Grimorio</a>
+                <a href="/admin/new" class="btn-new">+ Nuevo Elemento</a>
+                <a href="/admin/logout" class="btn-logout">Salir</a>
+            </div>
+        </header>
+
+        <div class="admin-stats">
+            <div class="stat"><strong><%= elements.length %></strong> elementos en el grimorio</div>
+        </div>
+
+        <table class="admin-table">
+            <thead>
+                <tr>
+                    <th>Nombre</th>
+                    <th>Categoría</th>
+                    <th>Elemento</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% elements.forEach(el => { %>
+                <tr>
+                    <td><strong><%= el.name_es %></strong> / <%= el.name_en %></td>
+                    <td><%= el.category %></td>
+                    <td><%= el.element || '-' %></td>
+                    <td class="actions">
+                        <a href="/admin/edit/<%= el.id %>" class="btn-edit">Editar</a>
+                        <form method="POST" action="/admin/delete/<%= el.id %>" style="display:inline" onsubmit="return confirm('¿Eliminar este elemento?')">
+                            <button type="submit" class="btn-delete">Eliminar</button>
+                        </form>
+                    </td>
+                </tr>
+                <% }); %>
+            </tbody>
+        </table>
+
+        <% if (elements.length === 0) { %>
+        <div class="empty-admin">
+            <p>No hay elementos aún. <a href="/admin/new">Agrega el primero →</a></p>
+        </div>
+        <% } %>
+    </div>
+</body>
+</html>
