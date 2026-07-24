@@ -35,13 +35,12 @@ const elements = [
   { id:26, name_es:'Ojo de Tigre', name_en:'Tiger Eye', scientific_name:'Cuarzo microcristalino', category:'mineral', element:'Fuego', planet:'Sol', chakra:'Plexo Solar', body_benefits:'Fortalece sistema digestivo, estabiliza energía vital, grounding táctil.', spiritual_benefits:'PROTECCIÓN GUERRERA y EMPODERAMIENTO. Coraje, confianza, poder personal. Atrae prosperidad por ACCIÓN.', uses:'Llevar encima: protección diaria\nEn negocio: atraer clientes\nMeditación: sobre plexo solar\nEntrevistas: en bolsillo', precautions:'Limpiar con sahumerio o luna. Cargar al sol. No agua salada prolongada.' },
 ];
 
-elements.forEach(el => { el.created_at = new Date().toISOString(); el.updated_at = el.created_at; el.image_url = null; });
-
-// Only seed if file is empty or doesn't exist
+// Always seed if file is empty or missing
 let existing = [];
 try { existing = JSON.parse(fs.readFileSync(ELEMENTS_FILE, 'utf8')); } catch(e) {}
 
 if (existing.length === 0) {
+  elements.forEach(el => { el.created_at = new Date().toISOString(); el.updated_at = el.created_at; el.image_url = null; });
   fs.writeFileSync(ELEMENTS_FILE, JSON.stringify(elements, null, 2));
   console.log(`✦ Seeded ${elements.length} elements into the grimoire.`);
 } else {

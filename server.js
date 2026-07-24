@@ -13,7 +13,13 @@ const ELEMENTS_FILE = path.join(DATA_DIR, 'elements.json');
 const USERS_FILE = path.join(DATA_DIR, 'users.json');
 
 if (!fs.existsSync(DATA_DIR)) fs.mkdirSync(DATA_DIR, { recursive: true });
-if (!fs.existsSync(ELEMENTS_FILE)) fs.writeFileSync(ELEMENTS_FILE, '[]');
+
+// Ensure elements file exists
+if (!fs.existsSync(ELEMENTS_FILE)) {
+  fs.writeFileSync(ELEMENTS_FILE, '[]');
+}
+
+// Ensure users file exists
 if (!fs.existsSync(USERS_FILE)) {
   const hash = bcrypt.hashSync('blendara2024', 10);
   fs.writeFileSync(USERS_FILE, JSON.stringify([{ id: 1, username: 'admin', password: hash }]));
@@ -21,10 +27,13 @@ if (!fs.existsSync(USERS_FILE)) {
 }
 
 // Auto-seed if elements file is empty
-const currentElements = JSON.parse(fs.readFileSync(ELEMENTS_FILE, 'utf8'));
-if (currentElements.length === 0) {
+let currentElements = [];
+try { currentElements = JSON.parse(fs.readFileSync(ELEMENTS_FILE, 'utf8')); } catch(e) {}
+if (!currentElements || currentElements.length === 0) {
   console.log('No elements found, running seed...');
   require('./seed');
+} else {
+  console.log(`✦ Loaded ${currentElements.length} elements from database.`);
 }
 
 function readElements() { return JSON.parse(fs.readFileSync(ELEMENTS_FILE, 'utf8')); }
