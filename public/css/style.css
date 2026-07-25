@@ -241,3 +241,41 @@ footer blockquote {
     .grid { grid-template-columns: 1fr; }
     .element-header h1 { font-size: 1.6rem; }
 }
+
+/* LANGUAGE TOGGLE */
+.lang-toggle {
+    position: fixed;
+    top: 15px;
+    right: 20px;
+    z-index: 200;
+    background: rgba(255,255,255,0.95);
+    padding: 8px 16px;
+    border-radius: 20px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.1);
+    border: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.lang-btn {
+    background: none;
+    border: none;
+    font-family: 'Lora', serif;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: #aaa;
+    cursor: pointer;
+    padding: 4px 8px;
+    border-radius: 10px;
+    transition: all 0.3s;
+}
+
+.lang-btn.active {
+    color: var(--accent);
+    background: var(--bg);
+}
+
+.lang-btn:hover { color: var(--gold); }
+
+.lang-divider { color: var(--border); font-size: 0.8rem; }

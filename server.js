@@ -112,17 +112,17 @@ app.get('/admin/edit/:id', requireAuth, (req, res) => {
 
 app.post('/admin/save', requireAuth, (req, res) => {
   const elements = readElements();
-  const { id, name_es, name_en, scientific_name, category, element, planet, chakra, body_benefits, spiritual_benefits, uses, precautions, image_url } = req.body;
+  const { id, name_es, name_en, scientific_name, category, element, planet, chakra, body_benefits, body_benefits_en, spiritual_benefits, spiritual_benefits_en, uses, uses_en, precautions, precautions_en, image_url } = req.body;
   const now = new Date().toISOString();
 
   if (id) {
     const idx = elements.findIndex(e => e.id == id);
     if (idx !== -1) {
-      elements[idx] = { ...elements[idx], name_es, name_en, scientific_name, category, element, planet, chakra, body_benefits, spiritual_benefits, uses, precautions, image_url, updated_at: now };
+      elements[idx] = { ...elements[idx], name_es, name_en, scientific_name, category, element, planet, chakra, body_benefits, body_benefits_en, spiritual_benefits, spiritual_benefits_en, uses, uses_en, precautions, precautions_en, image_url, updated_at: now };
     }
   } else {
     const newId = elements.length > 0 ? Math.max(...elements.map(e => e.id)) + 1 : 1;
-    elements.push({ id: newId, name_es, name_en, scientific_name, category, element, planet, chakra, body_benefits, spiritual_benefits, uses, precautions, image_url, created_at: now, updated_at: now });
+    elements.push({ id: newId, name_es, name_en, scientific_name, category, element, planet, chakra, body_benefits, body_benefits_en, spiritual_benefits, spiritual_benefits_en, uses, uses_en, precautions, precautions_en, image_url, created_at: now, updated_at: now });
   }
   writeElements(elements);
   res.redirect('/admin');

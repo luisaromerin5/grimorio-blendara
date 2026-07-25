@@ -8,24 +8,33 @@
     <link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
+    <!-- LANGUAGE TOGGLE -->
+    <div class="lang-toggle">
+        <button class="lang-btn active" data-lang="es">ESP</button>
+        <span class="lang-divider">|</span>
+        <button class="lang-btn" data-lang="en">ENG</button>
+    </div>
+
     <header>
         <h1>✦ Wonderful Elements ✦</h1>
-        <p class="subtitle">Blendara Apothecary — Grimorio Herbolario</p>
-        <p class="intro">Nature has always kept its secrets within every flower, leaf, root, and mineral. Some have been revealed by science; others live on through stories and rituals passed from one generation to the next.</p>
+        <p class="subtitle">Blendara Apothecary</p>
+        <p class="intro lang-es">La naturaleza siempre ha guardado sus secretos en cada flor, hoja, raíz y mineral. Algunos han sido revelados por la ciencia; otros viven a través de historias y rituales pasados de generación en generación.</p>
+        <p class="intro lang-en" style="display:none;">Nature has always kept its secrets within every flower, leaf, root, and mineral. Some have been revealed by science; others live on through stories and rituals passed from one generation to the next.</p>
     </header>
 
     <nav id="filters">
-        <button class="filter-btn active" data-filter="all">Todos</button>
-        <button class="filter-btn" data-filter="flower">🌸 Flores</button>
-        <button class="filter-btn" data-filter="herb">🌿 Hierbas</button>
-        <button class="filter-btn" data-filter="spice">🫚 Especias</button>
-        <button class="filter-btn" data-filter="mineral">💎 Minerales</button>
+        <button class="filter-btn active" data-filter="all"><span class="lang-es">Todos</span><span class="lang-en" style="display:none">All</span></button>
+        <button class="filter-btn" data-filter="flower">🌸 <span class="lang-es">Flores</span><span class="lang-en" style="display:none">Flowers</span></button>
+        <button class="filter-btn" data-filter="herb">🌿 <span class="lang-es">Hierbas</span><span class="lang-en" style="display:none">Herbs</span></button>
+        <button class="filter-btn" data-filter="spice">🫚 <span class="lang-es">Especias</span><span class="lang-en" style="display:none">Spices</span></button>
+        <button class="filter-btn" data-filter="mineral">💎 <span class="lang-es">Minerales</span><span class="lang-en" style="display:none">Minerals</span></button>
     </nav>
 
     <main>
         <% if (elements.length === 0) { %>
             <div class="empty-state">
-                <p>✦ El grimorio está vacío. Agrega elementos desde el <a href="/admin">panel de administración</a>.</p>
+                <p class="lang-es">✦ El grimorio está vacío. Agrega elementos desde el <a href="/admin">panel de administración</a>.</p>
+                <p class="lang-en" style="display:none">✦ The grimoire is empty. Add elements from the <a href="/admin">admin panel</a>.</p>
             </div>
         <% } %>
 
@@ -33,8 +42,10 @@
             <% elements.forEach(el => { %>
             <a href="/element/<%= el.id %>" class="card" data-category="<%= el.category %>">
                 <div class="card-element-badge <%= el.element %>"><%= el.element || '✦' %></div>
-                <h2><%= el.name_es %></h2>
-                <p class="card-en"><%= el.name_en %></p>
+                <h2 class="lang-es"><%= el.name_es %></h2>
+                <h2 class="lang-en" style="display:none"><%= el.name_en %></h2>
+                <p class="card-en lang-es"><%= el.name_en %></p>
+                <p class="card-en lang-en" style="display:none"><%= el.name_es %></p>
                 <p class="card-scientific"><em><%= el.scientific_name || '' %></em></p>
                 <p class="card-planet"><%= el.planet || '' %></p>
             </a>
@@ -43,22 +54,39 @@
     </main>
 
     <footer>
-        <blockquote>"Cada planta es una maestra, cada mineral un guardián."</blockquote>
+        <blockquote class="lang-es">"Cada planta es una maestra, cada mineral un guardián."</blockquote>
+        <blockquote class="lang-en" style="display:none">"Every plant is a teacher, every mineral a guardian."</blockquote>
         <p>✦ Blendara Apothecary ✦</p>
     </footer>
 
     <script>
+        // Language toggle
+        let currentLang = localStorage.getItem('grimorio-lang') || 'es';
+        setLanguage(currentLang);
+
+        document.querySelectorAll('.lang-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const lang = btn.dataset.lang;
+                setLanguage(lang);
+                localStorage.setItem('grimorio-lang', lang);
+            });
+        });
+
+        function setLanguage(lang) {
+            document.querySelectorAll('.lang-btn').forEach(b => b.classList.remove('active'));
+            document.querySelector(`.lang-btn[data-lang="${lang}"]`).classList.add('active');
+            document.querySelectorAll('.lang-es').forEach(el => el.style.display = lang === 'es' ? '' : 'none');
+            document.querySelectorAll('.lang-en').forEach(el => el.style.display = lang === 'en' ? '' : 'none');
+        }
+
+        // Filter buttons
         document.querySelectorAll('.filter-btn').forEach(btn => {
             btn.addEventListener('click', () => {
                 document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
                 btn.classList.add('active');
                 const filter = btn.dataset.filter;
                 document.querySelectorAll('.card').forEach(card => {
-                    if (filter === 'all' || card.dataset.category === filter) {
-                        card.style.display = '';
-                    } else {
-                        card.style.display = 'none';
-                    }
+                    card.style.display = (filter === 'all' || card.dataset.category === filter) ? '' : 'none';
                 });
             });
         });
