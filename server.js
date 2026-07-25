@@ -31,11 +31,22 @@ let currentElements = [];
 try { currentElements = JSON.parse(fs.readFileSync(ELEMENTS_FILE, 'utf8')); } catch(e) {}
 if (!currentElements || currentElements.length === 0) {
   console.log('No elements found, seeding from translated data...');
-  const seedFile = path.join(__dirname, 'data', 'elements-seed.json');
-  if (fs.existsSync(seedFile)) {
-    fs.copyFileSync(seedFile, ELEMENTS_FILE);
-    console.log('✦ Seeded from elements-seed.json');
-  } else {
+  // Try multiple locations for the seed file
+  const seedLocations = [
+    path.join(__dirname, 'data', 'elements-seed.json'),
+    path.join(__dirname, 'elements-seed.json'),
+  ];
+  let seeded = false;
+  for (const seedFile of seedLocations) {
+    if (fs.existsSync(seedFile)) {
+      fs.copyFileSync(seedFile, ELEMENTS_FILE);
+      console.log(`✦ Seeded from ${seedFile}`);
+      seeded = true;
+      break;
+    }
+  }
+  if (!seeded) {
+    console.log('No seed file found, running seed.js...');
     require('./seed');
   }
 } else {
