@@ -30,8 +30,14 @@ if (!fs.existsSync(USERS_FILE)) {
 let currentElements = [];
 try { currentElements = JSON.parse(fs.readFileSync(ELEMENTS_FILE, 'utf8')); } catch(e) {}
 if (!currentElements || currentElements.length === 0) {
-  console.log('No elements found, running seed...');
-  require('./seed');
+  console.log('No elements found, seeding from translated data...');
+  const seedFile = path.join(__dirname, 'data', 'elements-seed.json');
+  if (fs.existsSync(seedFile)) {
+    fs.copyFileSync(seedFile, ELEMENTS_FILE);
+    console.log('✦ Seeded from elements-seed.json');
+  } else {
+    require('./seed');
+  }
 } else {
   console.log(`✦ Loaded ${currentElements.length} elements from database.`);
 }
