@@ -20,12 +20,21 @@
 
     <article class="element-detail">
         <header class="element-header">
-            <div class="element-badge <%= element.element %>"><%= element.element || '✦' %></div>
+            <div class="element-badge <%= element.element %>">
+                <span class="lang-es"><%= element.element || '✦' %></span>
+                <span class="lang-en" style="display:none"><%= (element.element || '✦').replace('Fuego','Fire').replace('Agua','Water').replace('Aire','Air').replace('Tierra','Earth') %></span>
+            </div>
             <h1><%= element.name_es %> / <%= element.name_en %></h1>
             <p class="meta">
                 <% if (element.scientific_name) { %><em><%= element.scientific_name %></em> — <% } %>
-                <% if (element.element) { %><span class="lang-es">Elemento:</span><span class="lang-en" style="display:none">Element:</span> <strong><%= element.element %></strong><% } %>
-                <% if (element.planet) { %> | <span class="lang-es">Planeta:</span><span class="lang-en" style="display:none">Planet:</span> <strong><%= element.planet %></strong><% } %>
+                <% if (element.element) { %>
+                    <span class="lang-es">Elemento: <strong><%= element.element %></strong></span>
+                    <span class="lang-en" style="display:none">Element: <strong><%= element.element.replace('Fuego','Fire').replace('Agua','Water').replace('Aire','Air').replace('Tierra','Earth') %></strong></span>
+                <% } %>
+                <% if (element.planet) { %>
+                    <span class="lang-es"> | Planeta: <strong><%= element.planet %></strong></span>
+                    <span class="lang-en" style="display:none"> | Planet: <strong><%= element.planet.replace('Sol','Sun').replace('Luna','Moon').replace('Tierra','Earth') %></strong></span>
+                <% } %>
                 <% if (element.chakra) { %> | Chakra: <strong><%= element.chakra %></strong><% } %>
             </p>
         </header>
@@ -66,6 +75,22 @@
         </section>
         <% } %>
     </article>
+
+    <!-- PREV / NEXT NAVIGATION -->
+    <nav class="element-nav">
+        <a href="/element/<%= prev.id %>" class="nav-prev">
+            <span class="nav-arrow">←</span>
+            <span class="nav-label lang-es">Anterior</span>
+            <span class="nav-label lang-en" style="display:none">Previous</span>
+            <span class="nav-name"><%= prev.name_es %></span>
+        </a>
+        <a href="/element/<%= next.id %>" class="nav-next">
+            <span class="nav-label lang-es">Siguiente</span>
+            <span class="nav-label lang-en" style="display:none">Next</span>
+            <span class="nav-name"><%= next.name_es %></span>
+            <span class="nav-arrow">→</span>
+        </a>
+    </nav>
 
     <footer>
         <p>✦ Blendara Apothecary ✦</p>

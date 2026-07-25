@@ -242,6 +242,62 @@ footer blockquote {
     .element-header h1 { font-size: 1.6rem; }
 }
 
+/* ELEMENT NAVIGATION (PREV/NEXT) */
+.element-nav {
+    display: flex;
+    justify-content: space-between;
+    max-width: 800px;
+    margin: 40px auto;
+    padding: 0 30px;
+    gap: 20px;
+}
+
+.nav-prev, .nav-next {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+    color: var(--accent);
+    padding: 15px 20px;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    background: var(--card-bg);
+    transition: all 0.3s;
+    flex: 1;
+}
+
+.nav-prev { justify-content: flex-start; }
+.nav-next { justify-content: flex-end; text-align: right; }
+
+.nav-prev:hover, .nav-next:hover {
+    background: var(--bg);
+    border-color: var(--gold);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+}
+
+.nav-arrow {
+    font-size: 1.4rem;
+    color: var(--gold);
+}
+
+.nav-label {
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #999;
+}
+
+.nav-name {
+    font-weight: 600;
+    font-size: 0.95rem;
+}
+
+@media (max-width: 600px) {
+    .element-nav { flex-direction: column; padding: 0 20px; }
+    .nav-next { justify-content: flex-start; }
+}
+
 /* LANGUAGE TOGGLE */
 .lang-toggle {
     position: fixed;

@@ -72,10 +72,13 @@ app.get('/', (req, res) => {
 });
 
 app.get('/element/:id', (req, res) => {
-  const elements = readElements();
-  const element = elements.find(e => e.id == req.params.id);
-  if (!element) return res.status(404).render('404');
-  res.render('element', { element });
+  const elements = readElements().sort((a, b) => a.name_es.localeCompare(b.name_es));
+  const idx = elements.findIndex(e => e.id == req.params.id);
+  if (idx === -1) return res.status(404).render('404');
+  const element = elements[idx];
+  const prev = idx > 0 ? elements[idx - 1] : elements[elements.length - 1];
+  const next = idx < elements.length - 1 ? elements[idx + 1] : elements[0];
+  res.render('element', { element, prev, next });
 });
 
 // ADMIN ROUTES
